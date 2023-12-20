@@ -8,6 +8,7 @@
       <div class="field">
         <label for="fullName">Full Name</label>
         <input
+          id="fullName"
           type="text"
           pInputText
           formControlName="fullName"
@@ -26,6 +27,7 @@
       <div class="field">
         <label for="email">Email</label>
         <input
+          id="email"
           type="text"
           pInputText
           formControlName="email"
@@ -44,6 +46,7 @@
       <div class="field">
         <label for="password">Password</label>
         <input
+          id="password"
           type="password"
           pInputText
           formControlName="password"
@@ -56,11 +59,15 @@
           class="block p-error"
         >
           <div *ngIf="password.errors?.['required']">Password is required.</div>
+          <div *ngIf="password.errors?.['minlength']">
+            Password must be at least 6 characters long.
+          </div>
         </small>
       </div>
       <div class="field">
         <label for="confirmPassword">Confirm Password</label>
         <input
+          id="confirmPassword"
           type="password"
           pInputText
           formControlName="confirmPassword"
@@ -87,6 +94,7 @@
         </small>
       </div>
       <p-button
+        id="submit-btn"
         label="Register"
         styleClass="w-full"
         [disabled]="registerForm.invalid"

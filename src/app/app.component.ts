@@ -39,7 +39,7 @@ export class AppComponent {
         [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)],
       ],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
     },
     {
@@ -49,8 +49,7 @@ export class AppComponent {
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService,
-    private router: Router
+    private messageService: MessageService
   ) {}
 
   get fullName() {
@@ -75,7 +74,7 @@ export class AppComponent {
     this.messageService.add({
       severity: 'success',
       summary: 'Success',
-      detail: 'Register successfully',
+      detail: 'Registered successfully',
     });
   }
 }

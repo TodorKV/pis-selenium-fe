@@ -71,11 +71,20 @@ export class AppComponent {
   submitDetails() {
     const postData = { ...this.registerForm.value };
     delete postData.confirmPassword;
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Registered successfully',
-    });
+    if (this.registerForm['controls']['email'].value === 'wrong@email.com') {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Email already exists',
+      });
+      return;
+    } else {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Registered successfully',
+      });
+    }
   }
 }
 
